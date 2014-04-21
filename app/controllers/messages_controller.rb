@@ -8,12 +8,13 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(message_params)
+    @user = User.find(params[:user_id])
+    @message = @user.messages.new(message_params)
     if @message.save
       flash[:notice] = "Your message was sent!"
-      redirect_to new_message_path
+      redirect_to :back
     else
-      render 'new'
+      render '/users/index.html.erb'
     end
   end
 
@@ -24,6 +25,6 @@ class MessagesController < ApplicationController
 
 private
   def message_params
-    params.require(:message).permit(:to, :from, :body)
+    params.require(:message).permit(:to, :from, :body, :user_id)
   end
 end

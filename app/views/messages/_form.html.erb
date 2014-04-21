@@ -1,0 +1,16 @@
+<h3>New message</h3>
+
+<%= render 'layouts/errors', object: @message %>
+
+<%= form_for [@user, @message], class: "form-group" do |f| %>
+  <%= f.label :to %><br>
+  <%= f.collection_select :to, User.all, :phone, :name %>
+  <br>
+  <%= f.label :body %>
+  <%= f.text_field :body, class: "form-control" %>
+
+  <%= f.hidden_field :from, value: @user.phone %>
+
+  <br>
+  <%= f.submit class: "btn btn-success" %>
+<% end %>
