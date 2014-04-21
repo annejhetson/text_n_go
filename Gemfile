@@ -10,13 +10,17 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 gem 'bootstrap-sass-extras'
 gem 'devise'
-gem 'rest_client'
+gem 'rest-client'
 
 group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'pry'
+  gem 'pry-debugger'
   gem 'capybara'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'psych'
 end
 
 group :development do
