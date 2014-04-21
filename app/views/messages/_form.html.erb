@@ -9,7 +9,7 @@
   <%= f.label :body %>
   <%= f.text_field :body, class: "form-control" %>
 
-  <%= f.hidden_field :from, value: @user.phone %>
+  <%= f.hidden_field :from, temp_array << value: @user.phone %>
 
   <br>
   <%= f.submit class: "btn btn-success" %>
