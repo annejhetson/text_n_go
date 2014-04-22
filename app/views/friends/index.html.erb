@@ -4,12 +4,14 @@
 <%= render "layouts/errors" , object: @friend %>
 <%= link_to "Add Friend Here", new_user_friend_path, id: "new_link",class: "btn btn-success", remote: true  %><br><br>
 <% if !@user.friends.first.nil? %>
+  <h4>Click on friend to edit their information</h4>
 
-  <ul id="friends">
+  <ul class="friends", id="friends">
     <% @user.friends.each do |friend| %>
-      <p><%= link_to "#{friend.name}: #{friend.phone}", edit_user_friend_path(@user, friend), class: "friend_link", remote: true %></p>
+      <p id="friend"><%= link_to "#{friend.name}: #{friend.phone}", edit_user_friend_path(@user, friend), class: "friend_link", remote: true %></p>
     <% end %>
   </ul>
+
 <% else %>
   <h3>You dont have any friends!</h3>
 <% end %>
