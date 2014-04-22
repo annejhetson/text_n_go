@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
                     length: {is: 10}
   has_many :messages
 
+  before_validation :validate_number
+
   def validate_number
     self.phone.gsub!(/[^0-9]/, "")
   end
