@@ -1,29 +1,40 @@
 <h1 class="jumbotron text-center">User Page</h1>
 
-<%= render 'messages/form' %>
-<hr>
+<% if !current_user.nil? %>
+  <%= render 'messages/form' %>
 
-<h3>Recieved messages </h3>
-<em>(click a message to show its full message)</em><br><br>
-<ul>
-  <% if @recieved_messages %>
-    <% @recieved_messages.each do |message| %>
+
+  <hr>
+
+  <h3>Recieved messages </h3>
+  <em>(click a message to show its full message)</em><br><br>
+  <ul>
+    <% if @recieved_messages %>
+      <% @recieved_messages.each do |message| %>
+        <div class="clickmessage well">
+          <p class="shortmessage"><%= message.body[0..15] + "..." %></p>
+          <p class="longmessage"><%= message.body %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </ul>
+  <hr>
+  <h3>Sent messages </h3>
+  <em>(click a message to show its full message)</em><br><br>
+  <ul>
+    <% @user.messages.each do |message| %>
       <div class="clickmessage well">
         <p class="shortmessage"><%= message.body[0..15] + "..." %></p>
         <p class="longmessage"><%= message.body %></p>
       </div>
     <% end %>
-  <% end %>
-</ul>
-<hr>
-<h3>Sent messages </h3>
-<em>(click a message to show its full message)</em><br><br>
-<ul>
-  <% @user.messages.each do |message| %>
-    <div class="clickmessage well">
-      <p class="shortmessage"><%= message.body[0..15] + "..." %></p>
-      <p class="longmessage"><%= message.body %></p>
+  </ul>
+  <br>
+
+  <% else %>
+    <div class="well">
+      <h3>Please sign up to send messages</h3>
+      <h4><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success" %> to start using the app</h4>
+      OR <h4><%= link_to "Sign In", new_user_session_path, class: "btn btn-primary"%> to use the app</h4>
     </div>
-  <% end %>
-</ul>
-<br>
+<% end %>
