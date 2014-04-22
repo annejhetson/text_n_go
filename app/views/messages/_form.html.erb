@@ -3,13 +3,20 @@
 <%= render 'layouts/errors', object: @message %>
 
 <%= form_for [@user, @message], class: "form-group" do |f| %>
-  <%= f.label :to %><br>
-  <%= f.collection_select :to, User.all, :phone, :name %>
-  <br>
+
+  <div class="form-group">
+    <% if !@all_users_not_self.nil? %>
+      <% @all_users_not_self.each do |user| %>
+        <%= check_box_tag "user_phone[]", user.phone %>
+        <%= user.name %><br>
+      <% end %>
+    <% end %>
+  </div>
+
   <%= f.label :body %>
   <%= f.text_field :body, class: "form-control" %>
 
-  <%= f.hidden_field :from, temp_array << value: @user.phone %>
+  <%= f.hidden_field :from, value: @user.phone %>
 
   <br>
   <%= f.submit class: "btn btn-success" %>
