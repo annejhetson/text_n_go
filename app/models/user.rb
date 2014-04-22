@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates :phone, presence: true,
                     length: {is: 10}
   has_many :messages
+  has_many :friends
 
   before_validation :validate_number
 

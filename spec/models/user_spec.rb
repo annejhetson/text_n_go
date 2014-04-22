@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe User do
   it { should have_many :messages }
+  it { should have_many :friends }
 
   context 'validates presence_of_name' do
     it 'validates that a name is present' do

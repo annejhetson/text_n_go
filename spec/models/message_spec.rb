@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Message, vcr: true do
   it { should belong_to :user }
+  it { should belong_to :friend }
+
   it 'doesnt save the message if twilio gives error' do
     message = build(:message, to: '013')
     message.save.should be_false
