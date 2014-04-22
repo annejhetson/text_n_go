@@ -1,3 +1,5 @@
+<%= link_to "Add/Edit Friend", user_friends_path(@user), class: "btn btn-primary" %>
+<br>
 <h3>New message</h3>
 
 <%= render 'layouts/errors', object: @message %>
@@ -5,8 +7,10 @@
 <%= form_for [@user, @message], class: "form-group" do |f| %>
 
   <div class="form-group">
-    <% if !@all_users_not_self.nil? %>
-      <% @all_users_not_self.each do |user| %>
+    <% if !@user.friends.first.nil? %>
+      <%= f.label "Select friends to send a message" %>
+      <br>
+      <% @user.friends.each do |user| %>
         <%= check_box_tag "user_phone[]", user.phone %>
         <%= user.name %><br>
       <% end %>

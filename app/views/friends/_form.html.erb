@@ -1,0 +1,13 @@
+<%= form_for [@user, @friend], url: user_friends_path, remote: true do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :phone %>
+  <%= f.text_field :phone, class: "form-control" %>
+
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <br>
+  <%= f.submit class: "btn btn-success" %>
+
+<% end %>

@@ -1,0 +1,3 @@
+$('.friend_link').hide();
+$('ul#friends').append('<div class="update"><h4>Update <%= j @friend.name %></h4>')
+$('ul#friends').append('<%= j render("friend") %></div>')

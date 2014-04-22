@@ -1,0 +1,17 @@
+<h1 class="jumbotron text-center">Your friends! </h1>
+<%= link_to "Send Message", root_path(@user), class: "btn btn-primary" %><br><br>
+
+<%= render "layouts/errors" , object: @friend %>
+<%= link_to "Add Friend Here", new_user_friend_path, id: "new_link",class: "btn btn-success", remote: true  %><br><br>
+<% if !@user.friends.first.nil? %>
+
+  <ul id="friends">
+    <% @user.friends.each do |friend| %>
+      <p><%= link_to "#{friend.name}: #{friend.phone}", edit_user_friend_path(@user, friend), class: "friend_link", remote: true %></p>
+    <% end %>
+  </ul>
+<% else %>
+  <h3>You dont have any friends!</h3>
+<% end %>
+
+

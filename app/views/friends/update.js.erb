@@ -1,0 +1,5 @@
+$('.update').hide()
+$('.updated_name').hide()
+$('ul#friends').append('<div class="updated_name"><hr><h4>Updated Information</h4><p><%= j @friend.name %>: <%= j @friend.phone %></p><%= link_to "Submit Changes", user_friends_path(@friend.user), class: "btn btn-primary" %></div>')
+$('#update_link').show()
+
