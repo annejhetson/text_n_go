@@ -7,7 +7,7 @@
   <h4>Click on friend to edit their information</h4>
 
   <ul class="friends", id="friends">
-    <% @user.friends.each do |friend| %>
+    <% @user.friends.order(:name).each do |friend| %>
       <p id="friend"><%= link_to "#{friend.name}: #{friend.phone}", edit_user_friend_path(@user, friend), class: "friend_link", remote: true %></p>
     <% end %>
   </ul>
